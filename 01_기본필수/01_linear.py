@@ -1,0 +1,23 @@
+"""실습 01 기본필수: 학습과 예측 두 문장을 연결합니다."""
+from sklearn.linear_model import LinearRegression
+
+# X는 한 행이 한 사람이고, 각 행의 숫자는 공부시간입니다. 그래서 [[1], [2], ...]입니다.
+X = [[1], [2], [3], [4], [5]]
+y = [52, 61, 69, 80, 89]  # 같은 순서의 실제 점수
+model = LinearRegression()  # 선을 맞추는 모델을 준비합니다. 아직 학습 전입니다.
+# TODO B01: model을 X, y로 학습하고, [[6]]의 예측을 prediction에 넣으세요.
+# 힌트: fit에는 입력과 정답, predict에는 입력만 전달합니다.
+# pass
+# prediction = None
+
+# X(공부 시간)와 y(실제 점수)의 관계를 학습합니다.
+model.fit(X, y)
+
+# 학습한 관계를 이용해 공부 시간이 6시간일 때의 점수를 예측합니다.
+# predict()는 여러 예측값을 담은 배열을 반환합니다.
+prediction = model.predict([[6]])
+
+print("기울기:", round(model.coef_[0], 1))
+print("절편:", round(model.intercept_, 1))
+print("6시간 예측:", round(prediction[0], 1))
+# 주의: 6시간은 학습 범위 1~5시간 밖입니다. 수식 확인용이며 실제 점수를 보장하지 않습니다.
